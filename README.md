@@ -1,1 +1,1 @@
-K8S-DASHΩÈ…‹  
+K8S-DASH 
