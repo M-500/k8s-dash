@@ -6,7 +6,10 @@
 
 package api
 
+import "gin-server/app/api/demo"
+
 type ApiGroup struct {
+	DemoApi demo.DemoApi
 }
 
 func NewApiGroups() *ApiGroup {

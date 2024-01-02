@@ -6,5 +6,17 @@
 
 package demo
 
+import (
+	"github.com/gin-gonic/gin"
+	"net/http"
+)
+
 type DemoApi struct {
+}
+
+func (*DemoApi) DemoController(ctx *gin.Context) {
+	ctx.JSON(http.StatusOK, gin.H{
+		"msg": "哈哈哈",
+	})
+	return
 }
