@@ -1,13 +1,29 @@
 package main
 
-import "fmt"
+import (
+	"flag"
+	"fmt"
+	"gin-server/app/config"
+	"github.com/gin-gonic/gin"
+	"net/http"
+)
 
-//
-// @Description
-// @Author 代码小学生王木木
-// @Date 2024/1/2 17:03
-//
+var configFile = flag.String("f", "dev.yaml", "the config file")
 
 func main() {
-	fmt.Printf("hello world!")
+	// 1. 初始化配置文件
+	flag.Parse()
+	serverCfg := config.MustLoadCfg(*configFile, "YML")
+	fmt.Println(serverCfg.Name, serverCfg.DB.Host)
+	r := gin.Default()
+	r.GET("", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{
+			"msg": "哈哈哈",
+		})
+	})
+	r.Run(fmt.Sprintf("%s:%s", serverCfg.Host, serverCfg.Port))
+	//svc.SetUpServiceContext(serverCfg)
+	//
+	//r := routers.SetUpRouters()
+	//panic(r.Run(fmt.Sprintf("%s:%d", serverCfg.Host, serverCfg.Port)))
 }

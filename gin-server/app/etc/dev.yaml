@@ -1,0 +1,33 @@
+Name: K8S-Dashboard  # 项目名字
+Host: 127.0.0.1     # 运行ip
+Port: 8800        # 运行端口
+local: "zh"       # 语言
+# 数据库配置相关
+db:
+  engine: mysql
+  username: admin
+  password: '123456'
+  host: 192.168.1.52
+  port: 3306
+  charset: utf8mb4
+  database: k8s-dash
+  showSQL: 'true'
+  maxIdleConns: 2
+  maxOpenConns: 10
+  connMaxLifetime: 30
+# redis 连接参数相关
+redis:
+  host: 192.168.1.52
+  port: 6379
+  pass: ""
+# 日志文件处理相关
+log:
+  level: "debug"
+  path: "log" #  日志文件位置
+  filename: "sj_cms_log"  # 日志文件名
+  max_size: 100 # 进行切割之前,日志文件的最大大小(MB为单位)
+  max_age: 100  # 保留旧文件的最大天数
+  max_backups: 100 # 保留旧文件的最大个数
+  compress: false # 是否压缩
+  stacktrace_key: "123213" #
+  format: "json"  # 序列化格式
