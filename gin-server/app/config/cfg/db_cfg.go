@@ -12,7 +12,7 @@ type MysqlCfg struct {
 	Password        string `mapstructure:"password"      json:"password"`          // 123456
 	Host            string `mapstructure:"host"          json:"host"`              // 127.0.0.1
 	Port            int    `mapstructure:"port"          json:"port"`              // 3306
-	Database        string `mapstructure:"database"      json:"database"`          // user_growth
+	Database        string `mapstructure:"database"      json:"database"`          //
 	Charset         string `mapstructure:"charset"       json:"charset"`           // utf8mb4
 	ShowSQL         bool   `mapstructure:"showSQL"       json:"showSQL"`           // false
 	MaxIdleConns    int    `mapstructure:"maxIdleConns"  json:"maxIdleConns"`      // 2

@@ -24,10 +24,10 @@ redis:
 log:
   level: "debug"
   path: "log" #  日志文件位置
-  filename: "sj_cms_log"  # 日志文件名
+  filename: "logs/gin_server_log"  # 日志文件名
+  err_filename: "logs/gin_server_err_log"  # 日志文件名
   max_size: 100 # 进行切割之前,日志文件的最大大小(MB为单位)
   max_age: 100  # 保留旧文件的最大天数
   max_backups: 100 # 保留旧文件的最大个数
-  compress: false # 是否压缩
-  stacktrace_key: "123213" #
   format: "json"  # 序列化格式
+  compress: false # 是否压缩

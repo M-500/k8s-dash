@@ -1,6 +1,9 @@
 package routers
 
-import "github.com/gin-gonic/gin"
+import (
+	"gin-server/app/controller"
+	"github.com/gin-gonic/gin"
+)
 
 //
 // @Description
@@ -9,6 +12,7 @@ import "github.com/gin-gonic/gin"
 //
 
 func RegisterUserRouter(r *gin.Engine) {
-	group := r.Group("/na")
-	group.POST("")
+	userController := controller.NewUserController()
+	group := r.Group("/api/v1/na")
+	group.GET("/demo", userController.Demo)
 }

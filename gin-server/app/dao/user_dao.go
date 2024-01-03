@@ -10,6 +10,7 @@ import (
 	"context"
 	"errors"
 	"gin-server/app/models"
+	"gin-server/pkg/utils/db_helper"
 	"time"
 	"xorm.io/xorm"
 )
@@ -19,9 +20,9 @@ type UserDao struct {
 	ctx context.Context
 }
 
-func NewUserDao(db *xorm.Engine, ctx context.Context) *UserDao {
+func NewUserDao(ctx context.Context) *UserDao {
 	return &UserDao{
-		db:  db,
+		db:  db_helper.GetDb(),
 		ctx: ctx,
 	}
 }
