@@ -14,13 +14,15 @@ import (
 var Instance *Config
 
 type Config struct {
-	Name  string       `mapstructure:"name"`
-	Host  string       `mapstructure:"host"`
-	Local string       `mapstructure:"local"`
-	Port  int          `mapstructure:"port"`
-	DB    cfg.MysqlCfg `mapstructure:"db"`
-	Redis cfg.RedisCfg `mapstructure:"redis"`
-	Logs  cfg.LogCfg   `mapstructure:"log"`
+	Name           string       `mapstructure:"name"`
+	Host           string       `mapstructure:"host"`
+	Local          string       `mapstructure:"local"`
+	Port           int          `mapstructure:"port"`
+	Debug          bool         `mapstructure:"debug"`
+	KubeConfigPath string       `mapstructure:"kubeConfigPath"`
+	DB             cfg.MysqlCfg `mapstructure:"db"`
+	Redis          cfg.RedisCfg `mapstructure:"redis"`
+	Logs           cfg.LogCfg   `mapstructure:"log"`
 }
 
 func MustLoadCfg(path string, types string) *Config {

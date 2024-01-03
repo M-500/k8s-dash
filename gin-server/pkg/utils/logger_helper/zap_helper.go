@@ -20,7 +20,7 @@ func TimeEncoder(t time.Time, enc zapcore.PrimitiveArrayEncoder) {
 	enc.AppendString(t.Format("2006-01-02 15:04:05.000"))
 }
 
-func NewLogger(isProd bool, logCfg *cfg.LogCfg) (*zap.Logger, error) {
+func SetUpLogger(isProd bool, logCfg *cfg.LogCfg) (*zap.Logger, error) {
 	// 1. 设置日志级别
 	level := zap.NewAtomicLevel()
 

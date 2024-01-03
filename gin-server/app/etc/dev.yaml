@@ -2,6 +2,8 @@ Name: K8S-Dashboard  # 项目名字
 Host: 127.0.0.1     # 运行ip
 Port: 8800        # 运行端口
 local: "zh"       # 语言
+debug: true      # 是否生产环境
+kubeConfigPath: app/etc/.kube/config
 # 数据库配置相关
 db:
   engine: mysql

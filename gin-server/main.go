@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"gin-server/app/config"
+	"gin-server/pkg/utils/k8s_helper"
 	"gin-server/pkg/utils/logger_helper"
 	"gin-server/routers"
 	"go.uber.org/zap"
@@ -18,12 +19,13 @@ func main() {
 	serverCfg := config.MustLoadCfg(*configFile, "YML")
 	fmt.Println(serverCfg.Name, serverCfg.DB.Host)
 
-	logger, err := logger_helper.NewLogger(true, &serverCfg.Logs)
+	logger, err := logger_helper.SetUpLogger(true, &serverCfg.Logs)
 	if err != nil {
 		panic(err)
 	}
-	//svc.SetUpServiceContext(serverCfg)
-	//
+
+	// 初始化K8S
+	k8s_helper.SetUpK8s()
 	r := routers.SetUpRouters(logger)
 	panic(r.Run(fmt.Sprintf("%s:%d", serverCfg.Host, serverCfg.Port)))
 }
