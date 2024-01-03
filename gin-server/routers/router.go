@@ -11,5 +11,6 @@ import "github.com/gin-gonic/gin"
 func SetUpRouters() *gin.Engine {
 	r := gin.Default()
 	// 注册路由绑定方法
+	RegisterUserRouter(r) // 注册用户模块的路由
 	return r
 }

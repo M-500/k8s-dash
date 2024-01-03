@@ -1,0 +1,11 @@
+---
+kind: reverse
+name: k8s-dash
+source:
+  database: mysql
+  # 指定要根据哪个数据库来生成Model类
+  conn_str: 'admin:123456@tcp(192.168.1.52:3306)/k8s-dash?charset=utf8mb4'
+targets:
+  - type: codes
+    language: golang
+    output_dir: ../../app/models/  # 指定Model生成的位置 这里的位置是基于当前文件的位置

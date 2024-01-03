@@ -7,6 +7,7 @@
 package services
 
 import (
+	"context"
 	"gin-server/app/dao"
 	"gin-server/app/models"
 	"golang.org/x/crypto/bcrypt"
@@ -14,10 +15,14 @@ import (
 
 type UserService struct {
 	userDao *dao.UserDao
+	ctx     context.Context
 }
 
-func NewUserService(userDao *dao.UserDao) *UserService {
-	return &UserService{userDao: userDao}
+func NewUserService(userDao *dao.UserDao, ctx context.Context) *UserService {
+	return &UserService{
+		userDao: userDao,
+		ctx:     ctx,
+	}
 }
 
 func (service *UserService) RegisterUser(username, password string) error {
@@ -31,11 +36,11 @@ func (service *UserService) RegisterUser(username, password string) error {
 		Password: string(hashedPassword),
 	}
 
-	return service.userDao.CreateUser(user)
+	return service.userDao.Insert(user)
 }
 
 func (service *UserService) AuthenticateUser(username, password string) (*models.User, error) {
-	user, err := service.userDao.GetUserByUsername(username)
+	user, err := service.userDao.FindByUserName(username)
 	if err != nil {
 		return nil, err
 	}

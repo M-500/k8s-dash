@@ -11,7 +11,7 @@ import (
 // @Date 2024/1/2 17:44
 //
 
-var ConfigInstance *Config
+var Instance *Config
 
 type Config struct {
 	Name  string       `mapstructure:"name"`
@@ -20,6 +20,7 @@ type Config struct {
 	Port  int          `mapstructure:"port"`
 	DB    cfg.MysqlCfg `mapstructure:"db"`
 	Redis cfg.RedisCfg `mapstructure:"redis"`
+	Logs  cfg.LogCfg   `mapstructure:"log"`
 }
 
 func MustLoadCfg(path string, types string) *Config {
@@ -38,6 +39,6 @@ func LoadYmlConfig(path string) *Config {
 	if err := v.Unmarshal(pc); err != nil {
 		panic(err)
 	}
-	ConfigInstance = pc
-	return ConfigInstance
+	Instance = pc
+	return Instance
 }
