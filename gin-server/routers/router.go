@@ -19,5 +19,6 @@ func SetUpRouters(logger *zap.Logger) *gin.Engine {
 	r.Use(middlewares.LoggerMiddleware(logger)) // 全局处理日志
 	// 注册路由绑定方法
 	RegisterUserRouter(r) // 注册用户模块的路由
+	RegisterK8sRouter(r)  // 注册K8S模块相关的路由
 	return r
 }
